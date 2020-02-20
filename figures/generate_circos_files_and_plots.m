@@ -12,6 +12,7 @@
 
 % move config files from toolbox/circos/circos_conf_files to
 % your_circos_folder/etc e.g. /usr/local/Cellar/circos/0.69-9/libexec/etc
+% folder with homebrew cirocs installation
 
 dataset=13;
 
@@ -47,6 +48,6 @@ cd ~
 cd ../..
 cd /usr/local/Cellar/circos/0.69-9/libexec/data % change to directory with circos distribution
 % command to call circos on OS X within Matlab
-system(['../bin/circos -conf etc/vpr_VAF_4layers.conf -outputfile circos_example_4l.png']); 
+system('../bin/circos -conf etc/vpr_VAF_4layers.conf -outputfile circos_example_4l.png'); 
 
 % output files are saved in /usr/local/Cellar/circos/0.69-9/libexec/data/
