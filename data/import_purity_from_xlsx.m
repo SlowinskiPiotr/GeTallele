@@ -16,5 +16,4 @@ for i=5:size(purity,1)
     end
 end
 
-save purity purity_BRCA
 
