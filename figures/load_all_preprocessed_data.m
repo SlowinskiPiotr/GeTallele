@@ -18,7 +18,7 @@ for i=1:72
 end
 
 % for vPR based purity figures
-load dict_p4e4; %saved output of function [dictionaries,populations,alleles]=gen_dict(4,4,0.01);
+load vprs_p4e4; %saved output of function [dictionaries,populations,alleles]=gen_dict(4,4,0.01);
 load VBP_all.mat; %.mat file generated...
 load all_prp.mat; %.mat file generated...
 
