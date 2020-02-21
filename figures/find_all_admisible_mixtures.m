@@ -1,4 +1,3 @@
-
 %%
 % for each dataset collect modes from all the chromosomes
 
@@ -72,53 +71,28 @@ end
 disp('done')
 
 %%
-tic,
-[all_vprs,populations,alleles]=gen_all_possible_vprs(4,4,0.01);
-toc,
-save -v7.3 vprs_p4e4 all_vprs populations alleles
-%%
 VBP_all=[];
 all_prp=[];
 
 parfor dataset=1:72
-    mds=vprs(dataset).m;%unique(round(mod(mod>0.5),2));
-    mds(mds<0.58)=[];
+    single_dataset_vprs=vprs(dataset).m;%unique(round(mod(mod>0.5),2));
+    single_dataset_vprs(single_dataset_vprs<0.58)=[];
     
     in_out=[];
     %clf
-    if ~isempty(mds)
+    if ~isempty(single_dataset_vprs)
         disp(dataset)
         tic,
         for i_pop=2:4 %loop over populations
             for i_al=1:4 %loop over events
-                nb_prop=size(all_vprs(i_pop,i_al).dict,3);
+                nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
                 for prop=1:nb_prop %loop over considered admixtures
-                    dict_mat=all_vprs(i_pop,i_al).dict(:,:,prop);
-                    if i_pop==3
-                    if i_al==1
-                        dict_mat(1:2,1:2)=0;
-                    elseif i_al==2
-                        dict_mat(1:3,1:3)=0;
-                    elseif i_al==3
-                        dict_mat(1:4,1:4)=0;
-                    elseif i_al==4
-                        dict_mat(1:5,1:5)=0;
-                    end
-                    elseif i_pop==4
-                    if i_al==1
-                        dict_mat(1:3,1:3)=0;
-                    elseif i_al==2
-                        dict_mat(1:6,1:6)=0;
-                    elseif i_al==3
-                        dict_mat(1:10,1:10)=0;
-                    elseif i_al==4
-                        dict_mat(1:15,1:15)=0;
-                    end
-                    end
-                    modes_dict=dict_mat(:); %all the modes of a given admixture
-                    modes_dict(modes_dict<0.5)=[]; %folded
-                    modes_dict=unique(modes_dict(:)); %unique modes
-                    [~,dist]=knnsearch(modes_dict,mds');
+                    vprs_p_e=all_vprs(i_pop,i_al).vprs(:,:,prop);
+
+                    vprs_p_e=vprs_p_e(:); %all the vprs of a given admixture
+                    vprs_p_e(vprs_p_e<0.5)=[]; %folded
+                    vprs_p_e=unique(vprs_p_e(:)); %unique modes
+                    [~,dist]=knnsearch(vprs_p_e,single_dataset_vprs');
                     if any(dist>0.009) || isempty(dist) %search radius
                         in_out(i_pop,i_al).prp(prop)=NaN;
                     else
@@ -136,7 +110,7 @@ parfor dataset=1:72
         k=1;
         for i_pop=2:4 %loop over populations
             for i_al=1:4 %loop over events
-                nb_prop=size(all_vprs(i_pop,i_al).dict,3);
+                nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
                 for prop=1:nb_prop %loop over considered admixtures
                     if isnan(in_out(i_pop,i_al).prp(prop))
                         prp_vec(k,:)=NaN;

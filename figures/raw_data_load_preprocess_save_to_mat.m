@@ -99,3 +99,8 @@ for dataset=21:-1:1
 end
 
 save -v7.3 participant_BRCA participant_BRCA
+%% generate all possible mixtures
+tic,
+[all_vprs,populations,alleles]=gen_all_possible_vprs(4,4,0.01);
+toc,
+save -v7.3 vprs_p4e4 all_vprs populations alleles
