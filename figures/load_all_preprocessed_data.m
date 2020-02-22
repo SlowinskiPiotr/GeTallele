@@ -1,5 +1,5 @@
-addpath(genpath('/Users/pms210/Dropbox/GeTallele/toolbox'));
-addpath(genpath('/Users/pms210/Dropbox/GeTallele/data'));
+%addpath(genpath('/your_path_here/GeTallele/toolbox'));
+%addpath(genpath('/your_path_here/GeTallele/data'));
 
 chromosomes_lengths=importdata('chromosomes_lengths.mat');
 gene_info=importdata('gene_coordinates.mat'); % .mat file generated using import_gene_names_and_positions_from_xlsx.m
@@ -19,7 +19,7 @@ end
 
 % for vPR based purity figures
 load vprs_p4e4; %saved output of function [all_vprs,populations,alleles]=gen_dict(4,4,0.01);
-load VBP_all.mat; %saved output of script find_all_admisible_mixtures.m
-load all_prp.mat; %saved output of script find_all_admisible_mixtures.m
+load VBP_all.mat; %saved output of script find_all_admissible_mixtures.m
+load all_prp.mat; %saved output of script find_all_admissible_mixtures.m
 
 
