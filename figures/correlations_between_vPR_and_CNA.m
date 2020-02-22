@@ -1,9 +1,4 @@
 % compute correlations between vPR and CNA
-thr=[];
-ph=[];
-pl=[];
-ph7=[];
-pl7=[];
 
 for dataset=72:-1:1
     data=participant_BRCA(dataset).all_vprs_mat_Tex;
@@ -15,9 +10,9 @@ for dataset=72:-1:1
     idx_s_min=find(CNAs>=-0.3 & CNAs<=0.3);
     idx_th=find(data(idx_s_min,6)==min(data(idx_s_min,6)));
     
-    thr(dataset)=median(data(idx_s_min(idx_th),18));
-    thr_l=thr(dataset)-0.05;
-    thr_h=thr(dataset)+0.05;
+    thr=median(data(idx_s_min(idx_th),18));
+    thr_l=thr-0.05;
+    thr_h=thr+0.05;
     
     idx_cr_low=(CNAs<thr_h);
     idx_cr_high=(CNAs>thr_l);
