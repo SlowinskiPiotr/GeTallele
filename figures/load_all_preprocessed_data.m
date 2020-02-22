@@ -22,6 +22,4 @@ load vprs_p4e4; %saved output of function [dictionaries,populations,alleles]=gen
 load VBP_all.mat; %.mat file generated...
 load all_prp.mat; %.mat file generated...
 
-for i=1:72
-    purity_estim(i,:)=participant_BRCA(i).purity;
-end
+
