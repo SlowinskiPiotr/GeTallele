@@ -18,8 +18,8 @@ for i=1:72
 end
 
 % for vPR based purity figures
-load vprs_p4e4; %saved output of function [dictionaries,populations,alleles]=gen_dict(4,4,0.01);
-load VBP_all.mat; %.mat file generated...
-load all_prp.mat; %.mat file generated...
+load vprs_p4e4; %saved output of function [all_vprs,populations,alleles]=gen_dict(4,4,0.01);
+load VBP_all.mat; %saved output of script find_all_admisible_mixtures.m
+load all_prp.mat; %saved output of script find_all_admisible_mixtures.m
 
 

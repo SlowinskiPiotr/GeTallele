@@ -1,6 +1,4 @@
-%%
-% for each dataset collect modes from all the chromosomes
-
+% for each dataset collect vprs from all the chromosomes
 vprs=[];
 for dataset=numel(participant_BRCA):-1:1
     vprs(dataset).vpr1=[];
@@ -19,9 +17,7 @@ for dataset=numel(participant_BRCA):-1:1
     vprs(dataset).wl=[];
 
     for chr=1:22
-        
-        % based on Tex
-        data_and_stats=participant_BRCA(dataset).chrm(chr).data_and_stats_Tex;
+        data_and_stats=participant_BRCA(dataset).chrm(chr).data_and_stats_Tex; % based on Tex
         vpr1=data_and_stats.fitted_vprs(1,:);
         vpr2=data_and_stats.fitted_vprs(2,:);
         vpr3=data_and_stats.fitted_vprs(3,:);
@@ -75,23 +71,22 @@ VBP_all=[];
 all_prp=[];
 
 parfor dataset=1:72
-    single_dataset_vprs=vprs(dataset).m;%unique(round(mod(mod>0.5),2));
+    single_dataset_vprs=vprs(dataset).m;
     single_dataset_vprs(single_dataset_vprs<0.58)=[];
     
     in_out=[];
-    %clf
     if ~isempty(single_dataset_vprs)
         disp(dataset)
         tic,
         for i_pop=2:4 %loop over populations
             for i_al=1:4 %loop over events
                 nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
-                for prop=1:nb_prop %loop over considered admixtures
+                for prop=1:nb_prop %loop over considered mixtures
                     vprs_p_e=all_vprs(i_pop,i_al).vprs(:,:,prop);
 
-                    vprs_p_e=vprs_p_e(:); %all the vprs of a given admixture
+                    vprs_p_e=vprs_p_e(:); %all the vprs of a given mixture
                     vprs_p_e(vprs_p_e<0.5)=[]; %folded
-                    vprs_p_e=unique(vprs_p_e(:)); %unique modes
+                    vprs_p_e=unique(vprs_p_e(:)); %unique vprs
                     [~,dist]=knnsearch(vprs_p_e,single_dataset_vprs');
                     if any(dist>0.009) || isempty(dist) %search radius
                         in_out(i_pop,i_al).prp(prop)=NaN;
@@ -111,7 +106,7 @@ parfor dataset=1:72
         for i_pop=2:4 %loop over populations
             for i_al=1:4 %loop over events
                 nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
-                for prop=1:nb_prop %loop over considered admixtures
+                for prop=1:nb_prop %loop over considered mixtures
                     if isnan(in_out(i_pop,i_al).prp(prop))
                         prp_vec(k,:)=NaN;
                         ev_vec(k)=NaN;
@@ -127,11 +122,9 @@ parfor dataset=1:72
         end
         toc
         
-        tic
         all_prp(dataset).prp_vec_Tex=prp_vec;
         all_prp(dataset).ev_vec_Tex=ev_vec;
         all_prp(dataset).pop_vec_Tex=pop_vec;
-        toc
         
         tic
         for p_vec=2:4
@@ -155,4 +148,4 @@ parfor dataset=1:72
 end
 
 save -v7.3 all_prp all_prp
-save VBP_all VBP_all
+save -v7.3 VBP_all VBP_all
