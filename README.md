@@ -5,6 +5,8 @@ Repository with the toolbox (and code to reproduce the figures) described in: "G
 To do:
 - script to analyse a single dataset
 - descritpion of functions
+- more detailed comments in the files
+- R version of the toolbox
 
-Any questions please contact me: p.m.slowinski@exeter.ac.uk
+Any questions/ comments/ bugs please get in touch at p.m.slowinski@exeter.ac.uk
 
