@@ -4,10 +4,10 @@
 % toc,
 % save -v7.3 vprs_p4e4 all_vprs populations alleles
 %%
-load /Users/pms210/Dropbox/GeTallele/data/vprs_p4e4.mat
-load /Users/pms210/Dropbox/GeTallele/data/all_data_published.mat
-load /Users/pms210/Dropbox/GeTallele/data/purity.mat
-load /Users/pms210/Dropbox/GeTallele/data/chromosomes_lengths.mat
+load /Users/pms210/Dropbox/'GeTallele drafts'/data/vprs_p4e4.mat
+load /Users/pms210/Dropbox/'GeTallele drafts'/data/all_data_published.mat
+load /Users/pms210/Dropbox/'GeTallele drafts'/data/purity.mat
+load /Users/pms210/Dropbox/'GeTallele drafts'/data/chromosomes_lengths.mat
 
 %% generate farey  bins
 [bin_edges, bin_centres]=farey_bins(1000);
