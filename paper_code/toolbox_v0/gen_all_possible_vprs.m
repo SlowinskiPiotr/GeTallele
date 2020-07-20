@@ -18,7 +18,7 @@ function [all_vprs,populations,alleles]=gen_all_possible_vprs(p,a,ad_mix_res)
 %           numbers of populations, e.g. alleles(4,3) contains 4 elements combinations
 %           (4 populations) of 3 element set (3 alleles)
 %
-% structures for 1 popuation are empty
+% structures for 1 popuation are emptyz
 %
 % If you have any questions please contact: p.m.slowinski@exeter.ac.uk
 

@@ -21,7 +21,7 @@ end
 plot([0.5 1],[0.5 1],'k','linewidth',0.5)
 title('Based on 4 VAFs')
 ylabel('Estimated value')
-legend(h,'95%','50%','med','Location','best')
+legend(h,'95%','50%','med','Location','northwest')
 set(gca,'TickDir','out','xtick',0.5:0.1:1,'ytick',0.5:0.1:1,'MinorGridLineStyle','-')
 ax=gca;
 ax.XAxis.MinorTickValues=0.55:0.1:0.95;
