@@ -1,5 +1,5 @@
-function [VBP_est,vbp_data,VBP_dist,all_prp]=VBP_estimator(chr_results,all_vprs,populations)
-% collate all vprs and remove some
+function [VBP_est_keep,vbp_data_keep,VBP_dist,all_prp]=VBP_estimator(chr_results,all_vprs,populations)
+% collate all vprs and disregard some
 
 all_vpr_Nex=[];
 all_vpr_Tex=[];
@@ -32,45 +32,53 @@ vprs_for_VBP(all_seg_dp<50)=NaN;
 vprs_for_VBP(isnan(vprs_for_VBP))=[];
 vprs_for_VBP(vprs_for_VBP<0.58)=[];
 
-in_out=[];
+n_pop=size(all_vprs,1);
+n_ev=size(all_vprs,2);
+
 if ~isempty(vprs_for_VBP)
     tic,
-    for i_pop=2:4 %loop over populations
-        for i_al=1:4 %loop over events
-            nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
+    for i_pop=n_pop:-1:2 %loop over populations
+        for i_ev=n_ev:-1:1 %loop over events
+            nb_prop=size(all_vprs(i_pop,i_ev).vprs,3);
             for prop=1:nb_prop %loop over considered mixtures
-                vprs_p_e=all_vprs(i_pop,i_al).vprs(:,:,prop);
+                vprs_p_e=all_vprs(i_pop,i_ev).vprs(:,:,prop);
                 
                 vprs_p_e=vprs_p_e(:); %all the vprs of a given mixture
                 vprs_p_e(vprs_p_e<0.5)=[]; %folded
                 vprs_p_e=unique(vprs_p_e(:)); %unique vprs
                 [~,dist]=knnsearch(vprs_p_e,vprs_for_VBP');
                 if any(dist>0.009) || isempty(dist) %search radius
-                    in_out(i_pop,i_al).prp(prop)=NaN;
+                    in_out(i_pop,i_ev).prp(prop)=NaN;
                 else
-                    in_out(i_pop,i_al).prp(prop)=1;
+                    in_out(i_pop,i_ev).prp(prop)=1;
                 end
             end
         end
     end
     toc
     
-    prp_vec=zeros(4*(156849+4851+99),3);
-    ev_vec=zeros(4*(156849+4851+99),1);
-    pop_vec=zeros(4*(156849+4851+99),1);
+    prp_times_ev_size=0;
+    for i_pop=2:n_pop %loop over populations
+        nb_prop=size(all_vprs(i_pop,2).vprs,3);
+        prp_times_ev_size=prp_times_ev_size+n_ev*nb_prop;
+    end
+    
+    prp_vec=zeros(prp_times_ev_size,n_pop);
+    ev_vec=zeros(prp_times_ev_size,1);
+    pop_vec=zeros(prp_times_ev_size,1);
     tic,
     k=1;
-    for i_pop=2:4 %loop over populations
-        for i_al=1:4 %loop over events
-            nb_prop=size(all_vprs(i_pop,i_al).vprs,3);
+    for i_pop=2:n_pop %loop over populations
+        for i_ev=1:n_ev %loop over events
+            nb_prop=size(all_vprs(i_pop,i_ev).vprs,3);
             for prop=1:nb_prop %loop over considered mixtures
-                if isnan(in_out(i_pop,i_al).prp(prop))
+                if isnan(in_out(i_pop,i_ev).prp(prop))
                     prp_vec(k,:)=NaN;
                     ev_vec(k)=NaN;
                     pop_vec(k)=NaN;
                 else
                     prp_vec(k,1:i_pop)=populations(1,i_pop).p(prop,:);
-                    ev_vec(k)=i_al;
+                    ev_vec(k)=i_ev;
                     pop_vec(k)=i_pop;
                 end
                 k=k+1;
@@ -84,12 +92,18 @@ if ~isempty(vprs_for_VBP)
     all_prp.pop_vec=pop_vec;
     
     tic
-    for p_vec=2:4
-        for e_vec=1:4
+    for p_vec=n_pop:-1:2
+        for e_vec=n_ev:-1:1
             if sum(ev_vec==e_vec & pop_vec==p_vec)>0
                 idx=(ev_vec==e_vec & pop_vec==p_vec);
                 pr=round(1-prp_vec(idx,1),2);
                 VBP_dist(p_vec,e_vec).pr=pr;
+            else
+                
+                VBP_dist(p_vec,e_vec).pr=[];
+                all_prp.prp_vec=[];
+                all_prp.ev_vec=[];
+                all_prp.pop_vec=[];
             end
         end
     end
@@ -103,17 +117,30 @@ else
 end
 
 if ~isempty(VBP_dist)
-    for p_i=2:4
-        for e_i=1:4
+    to_keep=0;
+    for p_i=2:n_pop
+        for e_i=1:n_ev
             if ~isempty(VBP_dist(p_i,e_i).pr)
                 vbp_data=VBP_dist(p_i,e_i).pr;
                 VBP_est=min(vbp_data);
-                break
+                disp('mixture found!')
+                disp(['populations: ' num2str(p_i) '; events: ' num2str(e_i)]);
+                disp(['Purity: ' num2str(VBP_est)]);
+                if to_keep==0
+                    disp('this mixture has the lowest complexity and this value will be returned');
+                    vbp_data_keep=vbp_data;
+                    VBP_est_keep=VBP_est;
+                    to_keep=1; %this if statement will be entered only once
+                end
+            else
+                disp(['no fit - populations: ' num2str(p_i) '; events: ' num2str(e_i)])
+                vbp_data_keep=NaN;
+                VBP_est_keep=NaN;
             end
         end
     end
 else
     disp('no vprs')
-	vbp_data=NaN;
-	VBP_est=NaN;  
+    vbp_data_keep=NaN;
+    VBP_est_keep=NaN;
 end
