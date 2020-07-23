@@ -2,7 +2,7 @@
 [bin_edges, bin_centres]=farey_bins(1000);
 bin_edges=bin_edges(152097:end);
 
-%% load data and path to the toolbox
+%% add path to the toolbox and load example data 
 addpath(genpath('../toolbox_v1/')) % add path to the toolbox
 
 % data has the following structure:
