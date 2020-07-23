@@ -87,9 +87,7 @@ if ~isempty(vprs_for_VBP)
     end
     toc
     
-    all_prp.prp_vec=prp_vec;
-    all_prp.ev_vec=ev_vec;
-    all_prp.pop_vec=pop_vec;
+    all_prp=[pop_vec ev_vec prp_vec];
     
     tic
     for p_vec=n_pop:-1:2
@@ -99,11 +97,7 @@ if ~isempty(vprs_for_VBP)
                 pr=round(1-prp_vec(idx,1),2);
                 VBP_dist(p_vec,e_vec).pr=pr;
             else
-                
                 VBP_dist(p_vec,e_vec).pr=[];
-                all_prp.prp_vec=[];
-                all_prp.ev_vec=[];
-                all_prp.pop_vec=[];
             end
         end
     end
@@ -111,9 +105,7 @@ if ~isempty(vprs_for_VBP)
     
 else
     VBP_dist=[];
-    all_prp.prp_vec=[];
-    all_prp.ev_vec=[];
-    all_prp.pop_vec=[];
+    all_prp=[];
 end
 
 if ~isempty(VBP_dist)
@@ -121,8 +113,8 @@ if ~isempty(VBP_dist)
     for p_i=2:n_pop
         for e_i=1:n_ev
             if ~isempty(VBP_dist(p_i,e_i).pr)
-                vbp_data=VBP_dist(p_i,e_i).pr;
-                VBP_est=min(vbp_data);
+                vbp_data=[p_i,e_i];
+                VBP_est=min(VBP_dist(p_i,e_i).pr);
                 disp('mixture found!')
                 disp(['populations: ' num2str(p_i) '; events: ' num2str(e_i)]);
                 disp(['Purity: ' num2str(VBP_est)]);

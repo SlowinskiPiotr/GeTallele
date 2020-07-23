@@ -10,7 +10,9 @@ function VAF_sample=generate_VAF_sample(totalreads,vpr,nb_of_datapoints)
 %            nb_of_datapoints - number of VAF values that will be gnerated 
 %      Output:
 %            VAF_sample - vector of VAF values
-%        
+% 
+% The authors make no representations about the suitability of this software for any purpose.
+% It is provided "as is" without express or implied warranty.
 % -------------------------------------------------------------------------
 %   P. Slowinski, p.m.slowinski@exeter.ac.uk, 2020
 % -------------------------------------------------------------------------

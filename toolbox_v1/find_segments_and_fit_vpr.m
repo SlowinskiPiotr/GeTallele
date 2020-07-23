@@ -33,6 +33,7 @@ end
 % data on the chromosome of interest
 data_chr=data(idx_chr,:); % data_chr is a matrix with base-pairs and all layers
 
+
 % data in the range of interest
 idx_data_start=find(data_chr(:,2)>=start_pos,1,'first');
 idx_data_end=find(data_chr(:,2)<=end_pos,1,'last');
