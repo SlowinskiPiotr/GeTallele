@@ -1,26 +1,31 @@
 function [all_vprs,populations,alleles]=gen_all_possible_vprs(p,a,ad_mix_res)
-% The authors make no representations about the suitability of this software for any purpose.
-% It is provided "as is" without express or implied warranty.
 %
-% p - maximal number of populations (for memory reasons max(p)=4 could be changed in future)
-% a - maximal number of alleles' 'multiplicity' (for memory reasons max(a)=5 could be changed in future)
+% Input: 
+%   p - maximal number of populations (for memory reasons max(p)=4, but it could be changed in future)
+%   a - maximal number of alleles' 'multiplicity' (for memory reasons max(a)=5, but it could be changed in future)
+%   ad_mix_res - 'resolution' of considerd mixtures, e.g. 0.01 means that all
+%                proportions of the populations will be considered from 0.01:0.01:0.99 will be considered
 %
-% output:
-% dictionaries - structure with all the possible dictionaries, e.g.
-%                dictionaries(4,3) contains dictionary for mixtures of 4
-%                populations with up to 3 alleles, and dictionaries(3,2)
-%                contains dictionary for mixtures of 3 populations with
+% Output:
+%   all_vprs - structure with all the possible vprs values, e.g.
+%                all_vprs(4,3) contains vprs values for mixtures of 4
+%                populations with up to 3 alleles, and all_vprs(3,2)
+%                contains vprs values for mixtures of 3 populations with
 %                up to 2 alleles.
-% populations - structure with all the possible population proportions,
+%   populations - structure with all the possible population proportions,
 %               e.g. populations(2) contains all the considered proportions
 %               of 2 populations
-% alleles - structure with all the alleles combinations for different
+%   alleles - structure with all the alleles combinations for different
 %           numbers of populations, e.g. alleles(4,3) contains 4 elements combinations
 %           (4 populations) of 3 element set (3 alleles)
 %
-% structures for 1 popuation are emptyz
+%   structures for 1 popuation are empty
 %
-% If you have any questions please contact: p.m.slowinski@exeter.ac.uk
+% The authors make no representations about the suitability of this software for any purpose.
+% It is provided "as is" without express or implied warranty.      
+% -------------------------------------------------------------------------
+%   P. Slowinski, p.m.slowinski@exeter.ac.uk, 2020
+% -------------------------------------------------------------------------
 
 
 alleles=struct([]);

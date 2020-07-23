@@ -19,7 +19,7 @@
 % in the commands below change directory path to one where you want to keep data for generating circos plots
 % edit the .conf file if you change names of the files with data
 
-for chrm=1:22    
+for chrm=22:-1:1    
 chr_Nex(chrm).results=chr_results(chrm).Nex;
 chr_Ntr(chrm).results=chr_results(chrm).Ntr;
 chr_Tex(chrm).results=chr_results(chrm).Tex;
@@ -49,13 +49,5 @@ cd /usr/local/Cellar/circos/0.69-9/libexec/data % change path to directory with 
 
 % command to call circos on OS X within Matlab
 system('../bin/circos -conf etc/vpr_VAF_4layers.conf -outputfile circos_example_4l.png'); 
-
-%%
-% single layer with Ttr
-% files changed to adjust position of the vpr lines on the plot
-convert_vprs_to_circos_line(chr_Ttr,0.57,0.28,0,'/usr/local/Cellar/circos/0.69-9/libexec/data/vpr_Ttr_b.txt') %to plot vpr <0.5
-convert_vprs_to_circos_line(chr_Ttr,0.57,0.28,1,'/usr/local/Cellar/circos/0.69-9/libexec/data/vpr_Ttr_t.txt') %to plot vpr >0.5
-
-system('../bin/circos -conf etc/vpr_VAF_1layer.conf -outputfile circos_example_1l.png'); 
 
 % output files are saved in /usr/local/Cellar/circos/0.69-9/libexec/data/

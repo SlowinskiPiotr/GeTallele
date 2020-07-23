@@ -15,7 +15,9 @@ function data_VAF=convert_reads_to_VAF(data_readcounts)
 %                              1st column - chromosome
 %                              2nd column - base pair on the chromosome
 %                              3rd column - VAF value
-%        
+%
+% The authors make no representations about the suitability of this software for any purpose.
+% It is provided "as is" without express or implied warranty.      
 % -------------------------------------------------------------------------
 %   P. Slowinski, p.m.slowinski@exeter.ac.uk, 2020
 % -------------------------------------------------------------------------
