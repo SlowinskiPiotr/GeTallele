@@ -4,6 +4,7 @@ Repository with the toolbox (and code to reproduce the figures) described in: "G
 
 To do:
 - add description and comments to the functions that are used to estimate purity
+- add a list of files and descritpion of the folders
 - R version of the toolbox
 
 Any questions/ comments/ bugs please get in touch at p.m.slowinski@exeter.ac.uk
