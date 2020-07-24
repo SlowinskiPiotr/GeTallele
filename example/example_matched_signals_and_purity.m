@@ -106,7 +106,7 @@ max_events=5;
 resolution=0.01;
 
 tic,
-[all_vprs,populations]=gen_all_possible_vprs(max_populations,max_events,resolution);
+[all_vprs,populations,alleles]=gen_all_possible_vprs(max_populations,max_events,resolution);
 toc, %computation took >25 sec on machine with: Intel Core i7 (2.2 GHz) processor and 32 GB memory
 
 %% estimate vprs based purity VBP
@@ -120,9 +120,9 @@ toc, %computation took >25 sec on machine with: Intel Core i7 (2.2 GHz) processo
 % sample with vpr=0.5 to be <1e-6.
 
 tic,
-[VBP_est,lowes_complexity_mix,VBP_dist,all_prp]=VBP_estimator(chr_results,all_vprs,populations);
+[VBP_est,lowest_complexity_mix,VBP_dist,all_prp]=VBP_estimator(chr_results,all_vprs,populations);
 toc, %computation took >10 sec on machine with: Intel Core i7 (2.2 GHz) processor and 32 GB memory
 % for 4 populations and 5 events the computation time will icrease to > 8 minutes
 
 %% make a terenary plot for considered populations and events
-plot_adm_mix(all_prp,lowes_complexity_mix(1),lowes_complexity_mix(2))
+plot_adm_mix(all_prp,3,5)
