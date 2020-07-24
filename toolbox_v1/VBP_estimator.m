@@ -14,7 +14,7 @@ for chr_idx=1:22
     
     vpr_Tex=data_and_stats_Tex.fitted_vprs;
     p_05=data_and_stats_Tex.pv_vpr_neq_05;
-    seg_dp=data_and_stats_Tex.seg_dp_length;
+    seg_dp=diff(data_and_stats_Tex.segment_edges);
     
     all_vpr_Nex=[all_vpr_Nex vpr_Nex];
     all_vpr_Tex=[all_vpr_Tex vpr_Tex];

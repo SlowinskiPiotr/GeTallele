@@ -1,17 +1,17 @@
-%% generate bins based on farey sequences
-[bin_edges, bin_centres]=farey_bins(1000);
-bin_edges=bin_edges(152097:end);
-
 %% add path to the toolbox and load example data 
 addpath(genpath('../toolbox_v1/')) % add path to the toolbox
 
 % data has the following structure:
 % column 1 - chromosome
-% column 2 - position in base pairs  on the chromosome
+% column 2 - base pairs coordinates on the chromosomes
 % column 3 - variant read count
 % column 4 - reference read count
 
-example_data_Tex=importdata('example_data_Tex.tsv'); 
+example_data_Tex=importdata('example_data_Tex.tsv'); %Tex - tumor exome (there are examples of other signals)
+
+%% generate bins based on farey sequences
+[bin_edges, bin_centres]=farey_bins(1000);
+bin_edges=bin_edges(152097:end);
 
 %% compute synthetic VAF distributions for vprs from 0.5 to 1 for Nex, Ntr, Tex and Ttr signals
 
