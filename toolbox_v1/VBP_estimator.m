@@ -79,6 +79,7 @@ all_vpr_Tex(isnan(all_vpr_Tex))=[];
 all_Tex_p_05(isnan(all_Tex_p_05))=[];
 all_seg_dp(isnan(all_seg_dp))=[];
 
+% ------------- QUALITY CRITERIA FOR INCLUDING THE VPR VALUE IN THE PURITY ESTIMATION
 % copy the vpr estimates from Tex signal to a new variable
 vprs_for_VBP=all_vpr_Tex; 
 % remove the vpr values for which vpr in the same segment in Nex signal was>0.58
@@ -91,18 +92,17 @@ vprs_for_VBP(all_seg_dp<50)=NaN;
 
 % remove NaN values from the variables
 vprs_for_VBP(isnan(vprs_for_VBP))=[];
-
 % remove the vpr values <0.58
 vprs_for_VBP(vprs_for_VBP<0.58)=[];
 
-
+% ------------- FINDING ALL ADMISSIBLE MIXTURES
 % check what is maximal number of population and events for which we will
 % be serching for admissible mixtures
 n_pop=size(all_vprs,1);
 n_ev=size(all_vprs,2);
 
-% loop to find c mixtures
-if ~isempty(vprs_for_VBP)
+if ~isempty(vprs_for_VBP) %only start it if there are some good enough vpr values 
+    % loop to find admissible mixtures
     for i_pop=n_pop:-1:2 %loop over populations
         for i_ev=n_ev:-1:1 %loop over events
             nb_prop=size(all_vprs(i_pop,i_ev).vprs,3);
@@ -165,7 +165,9 @@ if ~isempty(vprs_for_VBP)
         end
     end
     
-    all_prp=[pop_vec ev_vec prp_vec];
+   
+    all_prp=[pop_vec ev_vec prp_vec];  % big matrix with proportions of all admissible mixtures
+    
     % here we convert proportion into purity=(1 - proportion of the normal population)
     % for all the admissible mixtures
     for p_vec=n_pop:-1:2
@@ -186,6 +188,7 @@ else
     all_prp=[];
 end
 
+% ------------- SELECTION OF THE MIXTURE WITH THE LOWEST COMPLEXITY
 % assignin output variables, after finding mixture with the lowest complexity 
 if ~isempty(VBP_dist)
     to_keep=0;
