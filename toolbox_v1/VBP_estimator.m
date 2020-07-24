@@ -189,7 +189,7 @@ end
 % assignin output variables, after finding mixture with the lowest complexity 
 if ~isempty(VBP_dist)
     to_keep=0;
-    for p_i=2:n_pop % we 1st go over number of population
+    for p_i=2:n_pop % we 1st go over number of populations 
         for e_i=1:n_ev  % next we go over number of events
             if ~isempty(VBP_dist(p_i,e_i).pr)
                 mix_complexity=[p_i,e_i]; % indicators of complexity (number of populations and events)
