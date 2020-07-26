@@ -6,12 +6,14 @@ Repository with the toolbox (and code to reproduce the figures) described in: "G
 
 ## Directory structure of the repository:
 
-## List of functions of GeTallele toolboox:
+## List of functions of the GeTallele toolboox:
 
 
 ## To do:
-- function to statistically (bootstrap based methodolgy) compare vpr values in two (not neccesserily matched)segments
-- R version of the toolbox
+* function to statistically (bootstrap based methodolgy) compare vpr values in two segments
+* example of how to generate a synthetic dataset (method used to genereate files: example_data_Nex.tsv, example_data_Tex.tsv, example_data_Ntr.tsv, example_data_Ttr.tsv)
+* R version of the toolbox
 
-## Any questions/ comments/ bugs please get in touch at p.m.slowinski@exeter.ac.uk
+## Contact:
+Any questions/ comments/ bugs please get in touch at p.m.slowinski@exeter.ac.uk
 
