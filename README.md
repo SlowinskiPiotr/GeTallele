@@ -2,12 +2,19 @@
 
 Repository with the toolbox (and code to reproduce the figures) described in: "GeTallele: a method for analysis of DNA and RNA allele frequencies distributions". Preprint availible at https://www.biorxiv.org/content/10.1101/491209v4
 
-## General comments 
+## General comments
+### Core functinaly
+### Input
 
 ## Directory structure of the repository:
 
 ## List of functions of the GeTallele toolboox:
-
+### Core functions
+*
+*
+### Other functions
+*
+*
 
 ## To do:
 * function to statistically (bootstrap based methodolgy) compare vpr values in two segments
