@@ -1,6 +1,6 @@
 # GeTallele
 
-Repository with the toolbox (and code to reproduce the figures) described in: "GeTallele: a method for analysis of DNA and RNA allele frequencies distributions". Preprint availible at https://www.biorxiv.org/content/10.1101/491209v4
+Repository with the toolbox described in: "GeTallele: a method for analysis of DNA and RNA allele frequencies distributions". Preprint availible at https://www.biorxiv.org/content/10.1101/491209v4
 
 ## GeTallele descritpion
 ### Functionality
@@ -14,13 +14,16 @@ Repository with the toolbox (and code to reproduce the figures) described in: "G
   * external - folder with matlab tools by other developers (download from https://mathworks.com/matlabcentral/fileexchange/)  
   * circos - folder with circos .conf and functions that convert GeTallele results into circos input files
 * example - folder with matlab script files containg walkthrough examples and files with example synthetic data
-* paper_code
-
+* paper_code - folder with the matlab code that has been used to produce results and figures presented in the paper
+  * toolbox_v0 - the 1st version of the toolbox that has been build around analysing datasets containing 4 matched signals (normal exome, normal transcriptome, tumor exome, tumor transcriptome)
+  * figures -
+  * data -
+  
 ## List of functions of the GeTallele toolboox:
 ### Core functions
 *
 *
-### Other functions
+### Additional functions
 *
 *
 
