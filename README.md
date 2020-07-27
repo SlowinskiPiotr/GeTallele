@@ -4,7 +4,7 @@ Repository with the toolbox (and code used for analysis and to produce figures) 
 
 ## GeTallele descritpion
 ### Functionality
-The toolbox that provides a suite of functions for analysis, statistical assessment and visualization of **Ge**nome and **T**ranscriptome **allele** frequencies distributions. The main functionality of GeTallele is estimation of **variant probability (vpr)** in chromosomal segments (continuous multi-SNV genomic regions). Variant probability allows for high-level description of variant allele frequencies (VAF) distribution in chromosomal segments. 
+The toolbox that provides a suite of functions for analysis, statistical assessment and visualization of **Ge**nome and **T**ranscriptome **allele** frequencies distributions. The main functionality of GeTallele is estimation of **variant probability (vpr)** in chromosomal segments (continuous multi-SNV genomic regions). Variant probability allows for high-level description of variant allele frequencies (VAF) distributions in chromosomal segments. 
 
 ### Requirments
 GeTallele requires basic knowledge of Matlab software environment. The Matlab skills requird to use GeTallele include: knowledge of basic Matlab syntax (e.g. *for* loop), importing data, working with Matlab scripts, working with sections in Matlab scripts, adding folders to search path. 
