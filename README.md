@@ -26,8 +26,8 @@ Since VAF estimations can be affected by allele mapping bias (https://pubmed.ncb
 To compare vpr values in different signals GeTallele requires matched sequencing sets. Namely, different signals should have reads at the same base-pair postions. Such matched signals can be for example obtained using RNA2DNAlign package (https://github.com/HorvathLab/RNA2DNAlign, https://pubmed.ncbi.nlm.nih.gov/27576531/)
 
 ### Example
-Folder \example contains a script 'simple_example.m' that presents basic steps of using GeTallele. The script is the best starting point to get started with using GeTallele. The script should be run from within the \example folder. The script shows how to:
-* add the toolbox folder to Matlab search path [*lines 1-2*]
+Folder \example contains a script 'simple_example.m' that presents basic steps of using GeTallele. The script is the best starting point to get started with GeTallele. The script should be run from within the \example folder. The script shows how to:
+* add the GeTallele toolbox folder to Matlab search path [*lines 1-2*]
 * import data from an example file (which contains synthetic data) [*lines 4-10*]
 * generate histogram bins based on a Farey sequence [*lines 12-14*]
 * generate a set of synthetic VAF samples (and their experimental cumulative distribution functions CDFs) that are later used to estimate vpr values in the data [*lines 16-26*]
@@ -37,7 +37,7 @@ Folder \example contains a script 'simple_example.m' that presents basic steps o
 * generate a circos plot with results of segmentation of all chromosomes [*lines 57-94*]. Additionally, this part of the example provides a basic guidance on installing and using cirocs from whitin Matlab on macOS. The instructions provided in the guidance worked in (July 2020).
 
 ## Directory structure of the repository:
-* toolbox_v1 - folder with matlab functions that provide core and extended functionalites of the toolbox
+* toolbox_v1 - __the main GeTallele folder__, contains matlab functions that provide core and extended functionalites of the toolbox
   * external - folder with matlab tools by other developers (download from https://mathworks.com/matlabcentral/fileexchange/)  
   * circos - folder with circos .conf and functions that convert GeTallele results into circos input files
 * example - folder with matlab script files containg walkthrough examples and files with example synthetic data
