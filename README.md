@@ -7,7 +7,7 @@ Repository with the toolbox (and code used for analysis and to produce figures) 
 The toolbox that provides a suite of functions for analysis, statistical assessment and visualization of **Ge**nome and **T**ranscriptome **allele** frequencies distributions. The main functionality of GeTallele is estimation of **variant probability (vpr)** in chromosomal segments (continuous multi-SNV genomic regions). Variant probability allows for high-level description of variant allele frequencies (VAF) distributions in chromosomal segments. 
 
 ### Requirments
-GeTallele requires basic knowledge of Matlab software environment. The Matlab skills requird to use GeTallele include: knowledge of basic Matlab syntax (e.g. *for* loop), importing data, working with Matlab scripts, working with sections in Matlab scripts, adding folders to search path. 
+GeTallele requires basic knowledge of Matlab software environment. The Matlab skills requird to use GeTallele include: knowledge of basic Matlab syntax (e.g. *for* loop), importing data, working with Matlab scripts, working with sections in Matlab scripts, using Matlab help. 
 
 GeTallel was created and tested with Matlab 2020a on macOS 10.14.6. 
 
@@ -20,7 +20,7 @@ The input to the GeTallele are variant read counts, and reference read counts. T
 1. variant read counts, 
 1. reference read counts. 
 
-Two first columns are required for interpretability and plotting. Vpr estimation requires only variant and reference read counts that can be obtaine by any availible method. Matrix with data for analysis can be imported into Matlab software environment from a wide range of text and binary file formats.
+Two first columns are required for interpretability and plotting. Vpr estimation requires only variant and reference read counts that can be obtaine by any availible method. Matrix with data for analysis can be imported into Matlab software environment from a wide range of text and binary file formats using buitl-in Matlab functionality.
 
 Since VAF estimations can be affected by allele mapping bias (https://pubmed.ncbi.nlm.nih.gov/19808877) which can lead to overestimation of the reference allele count (https://pubmed.ncbi.nlm.nih.gov/25787242), we suggest that GetAllele input is based on SNV-aware alignments (e.g. using https://pubmed.ncbi.nlm.nih.gov/26366987).
 
@@ -39,8 +39,8 @@ Folder \example contains a script 'simple_example.m' that presents basic steps o
 
 ## Directory structure of the repository:
 * toolbox_v1 - __the main GeTallele folder__, contains matlab functions that provide core and extended functionalites of the toolbox
-  * external - folder with matlab tools by other developers (download from https://mathworks.com/matlabcentral/fileexchange/)  
-  * circos - folder with circos .conf and functions that convert GeTallele results into circos input files
+  * external - folder with matlab tools by other developers (downloaded from https://mathworks.com/matlabcentral/fileexchange/)  
+  * circos - folder with circos .conf (\circos_conf_files subfolder) and functions that convert GeTallele results into circos input text files
 * example - folder with matlab script files containg walkthrough examples and files with example synthetic data
 * paper_code - folder with the matlab code that has been used to produce results and figures presented in the paper. In comparison with the latest version of the toolbox the code is commented very sparingly. This part of the code is no longer being developed and is include for archival and reproducibilty purposes. If you have questions concering any part of the code please contact me at p.m.slowinski@exeter.ac.uk.
   * toolbox_v0 - the initial version of the toolbox that has been build around and optimised for analysis of datasets containing 4 matched signals (normal exome, normal transcriptome, tumor exome, tumor transcriptome)
