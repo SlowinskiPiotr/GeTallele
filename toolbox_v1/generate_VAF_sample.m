@@ -27,7 +27,7 @@ N2=floor(nb_of_datapoints/2);
 
 % generate VAF samples for vpr
 p=vpr*ones(1,N1);
-% resample with replacment
+% resample with replacment`
 new_count_idx=randi(nb_reads,1,N1); 
 new_count=totalreads(new_count_idx);
 % generate random numbers from binomial distribution
