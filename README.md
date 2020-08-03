@@ -24,7 +24,7 @@ Two first columns are required for interpretability and plotting. Vpr estimation
 
 Since VAF estimations can be affected by allele mapping bias (https://pubmed.ncbi.nlm.nih.gov/19808877) which can lead to overestimation of the reference allele count (https://pubmed.ncbi.nlm.nih.gov/25787242), we suggest that GetAllele input is based on SNV-aware alignments (e.g. using https://pubmed.ncbi.nlm.nih.gov/26366987).
 
-To compare vpr values in different signals GeTallele requires matched sequencing sets. Namely, different signals should have reads at the same base-pair postions. Such matched signals can be for example obtained using RNA2DNAlign package (https://github.com/HorvathLab/RNA2DNAlign, https://pubmed.ncbi.nlm.nih.gov/27576531/)
+To compare vpr values in different signals GeTallele requires matched sequencing sets. Namely, different signals should have reads at the same base-pair postions. Such matched signals can, for example, be obtained using RNA2DNAlign package (https://github.com/HorvathLab/RNA2DNAlign, https://pubmed.ncbi.nlm.nih.gov/27576531/)
 
 ### Example
 Folder \example contains a script 'simple_example.m' that presents basic steps of using GeTallele. The script is the best starting point to get started with GeTallele. The script should be run from within the \example folder. The script shows how to:
