@@ -1,6 +1,6 @@
 # GeTallele
 
-Repository with the toolbox (and code used for analysis and to produce figures) described in: "GeTallele: a method for analysis of DNA and RNA allele frequencies distributions". Preprint availible at https://www.biorxiv.org/content/10.1101/491209v4
+Repository with the toolbox (and code used for analysis and to produce figures) described in: "GeTallele: a method for analysis of DNA and RNA allele frequencies distributions". Open accesss paper availible at https://www.frontiersin.org/articles/10.3389/fbioe.2020.01021/full
 
 ## GeTallele descritpion
 ### Functionality
